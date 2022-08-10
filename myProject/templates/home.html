@@ -1,5 +1,102 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+.header{
+  padding-top: 170px;
+  padding-bottom: 170px;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: beige;
+}
+
+.header img{
+  width: 430px;
+}
+
+.header h1{
+  text-align: center;
+  font-size: 55px;
+  margin-bottom: 22px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.lines{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: fit-content;
+  margin: auto;
+}
+
+.header p{
+  font-size: 20px;
+  margin: 2px;
+}
+
+.lines button{
+  margin-top: 30px;
+  padding: 5px;
+  font-size: 18px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  margin-left: 5px;
+}
+
+.posts{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.top-posts{
+  background-color: bisque;
+  padding: 30px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.top-posts h1{
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Roboto Slab', serif;
+  margin-bottom: 50px;
+}
+
+.post{
+  width: 29%;
+}
+</style>
+
+<section class="header">
+  <div>
+    <h1>STAY CURIOUS.</h1>
+    <div class="lines">
+      <p>Discover stories, thinking, and expertise from writers on any topic.</p>
+      <p>Share your thoughts with the world.</p>
+      <a href="{{url_for('core.blog')}}"><button>Start Reading</button></a>
+    </div>
+  </div>
+  <img src="https://cdn.pixabay.com/photo/2014/03/24/17/21/newspaper-295480_960_720.png" alt="">
+</section>
+
+<section class="top-posts">
+  <h1>Top Posts</h1>
+  <div class="posts">
+    {% for post in posts.items[:6] %}
+    <div class="card my-2 mx-4 post">
+        <div class="card-body">
+          <h5 class="card-title text-center">{{post.title}}</h5>
+          <p class="card-text mx-2">{{post.text[0:100]}}...</p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Written By: {{post.user.username}}</li>
+            <li class="list-group-item">Published On: {{post.date.strftime('%Y-%m-%d')}}</li>
+            <li class="list-group-item"><a href="{{url_for('blog_posts.blog_post',blog_post_id=post.id)}}"><button class="btn btn-primary">Read More</button></a></li>
+          </ul>                
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
 
 {% endblock %}
