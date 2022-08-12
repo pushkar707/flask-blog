@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container my-4">
 <h1 class="text-center">Welcome to page for {{current_user.username}}</h1>
-<img src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}" class='d-block mx-auto my-4'>
+<img alt="" src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}" class='d-block mx-auto my-4'>
 
 <form method='POST' action='' enctype="multipart/form-data">
     {{form.hidden_tag()}}

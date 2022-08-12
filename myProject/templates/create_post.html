@@ -43,8 +43,8 @@
     const textarea = document.querySelector('.text-area');
     document.addEventListener('keydown',(e)=>{
         const lines = textarea.value.split(/\r\n|\r|\n/).length;
-        if(lines>=10 && lines<20){
-            if(e.keyCode === 13){
+        if(lines>=10){
+            if(e.keyCode === 13 && lines<20){
                 textarea.style.height = `${24.3*(lines+1)+10}px`;
             }
             else if(e.keyCode === 8 || e.keyCode === 46 && lines>0){
