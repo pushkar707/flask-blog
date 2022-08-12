@@ -1,17 +1,57 @@
 {% extends "base.html" %}
 {% block content %}
+<style>
+.write-post{
+    display: block;
+    width: 100%;
+    padding-left: 1px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    padding: 5px;
+    background: none;
+    border: 1px solid black;
+}
+
+.write-post:focus{
+    padding: 5px;
+    background: none;
+    border: 1px solid black;
+}
+.text-area{
+    resize: none;
+    border: 1px solid black;
+}
+</style>
 <div class="container my-4">
 <form method="POST">
     {{form.hidden_tag()}}
     <div class="mb-3">
         {{form.title.label(class='form-label')}}
-        {{form.title(class='form-control')}}
+        {{form.title(class='write-post')}}
     </div>
     <div class="mb-3">
         {{form.text.label(class='form-label')}}
-        {{form.text(class='form-control')}}
+        {{form.text(class='write-post text-area',style="height:253px")}}
     </div>
-    {{form.submit(class='btn btn-primary')}}
+    {{form.submit(class='btn btn-primary',style="width:100px;")}}
 </form>
 </div>
+
+<script>
+    const textarea = document.querySelector('.text-area');
+    document.addEventListener('keydown',(e)=>{
+        const lines = textarea.value.split(/\r\n|\r|\n/).length;
+        if(lines>=10 && lines<20){
+            if(e.keyCode === 13){
+                textarea.style.height = `${24.3*(lines+1)+10}px`;
+            }
+            else if(e.keyCode === 8 || e.keyCode === 46 && lines>0){
+                textarea.style.height = `${24.3*(lines)+10}px`;
+            }
+        }
+    })
+    
+</script>
 {% endblock %}
