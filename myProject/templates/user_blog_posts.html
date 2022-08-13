@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container my-4">
+<div class="my-container p-3 my-4">
 <div class="my-3">
     <h1 class="text-center">Welcome {{user.username}}</h1>
     <img src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}" alt="" class='d-block mx-auto my-4'>
