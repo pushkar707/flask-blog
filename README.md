@@ -1,3 +1,3 @@
 This website is hosted on heroku.
 
-Link : https://my-blog-with-users.herokuapp.com/
+Link : https://flask-blog-by-pushkar.herokuapp.com/
