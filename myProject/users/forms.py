@@ -14,7 +14,7 @@ def check_email(form, field):
 
 class LoginForm(FlaskForm):
 
-    email = StringField('email',validators=[DataRequired(),Email()])
+    email = StringField('Email',validators=[DataRequired(),Email()])
     password = PasswordField('Password',validators=[DataRequired()])
     submit = SubmitField('Submit')
 

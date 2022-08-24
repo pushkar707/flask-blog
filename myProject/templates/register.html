@@ -2,7 +2,12 @@
 
 
 {% block content %}
-<div class="container my-4">
+<style>
+.login{
+    margin-top: 5px;
+}
+</style>
+<div class="my-container p-3">
 <form method='POST'>
     {{form.hidden_tag()}}
     <div class="mb-3">
@@ -21,8 +26,8 @@
         {{form.pass_confirm.label(class='form-label')}}
         {{form.pass_confirm(class='form-control')}}
     </div>
-    {{form.submit(class='btn btn-primary')}}
-    
+    {{form.submit(class='btn btn-primary',style="vertical-align:unset;")}}
+    <a href="/login" class="mx-2">Already a User</a>
 </form>
 </div>
 {% endblock %}

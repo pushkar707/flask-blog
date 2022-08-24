@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container my-4">
+<div class="my-container p-3">
+<h3 class="mb-3">Login</h3>
 <form method='POST'>
     {{form.hidden_tag()}}
     <div class='mb-3'>
@@ -11,7 +12,8 @@
         {{form.password.label(class='form-label')}}
         {{form.password(class='form-control')}}
     </div>
-    {{form.submit(class='btn btn-primary')}}
+    {{form.submit(class='btn btn-primary',style="vertical-align:unset;")}}
+    <a href="/register" class="mx-2">Create an account</a>
 </form>
 </div>
 {% endblock %}
